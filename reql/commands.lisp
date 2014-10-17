@@ -170,7 +170,7 @@
   (let ((options nil))
     (when upsert (push (cons "upsert" t) options))
     (when durability (push (cons "durability" durability) options))
-    (when return-vals (push (cons "return_vals" t) options))
+    (when return-vals (push (cons "return_changes" t) options))
     (create-term +term-term-type-insert+
                  (list (wrap-in-term table)
                        (wrap-in-term sequence/object))
@@ -190,7 +190,7 @@
   (let ((options nil))
     (when non-atomic (push (cons "non_atomic" t) options))
     (when durability (push (cons "durability" durability) options))
-    (when return-vals (push (cons "return_vals" t) options))
+    (when return-vals (push (cons "return_changes" t) options))
     (create-term +term-term-type-update+
                  (list (wrap-in-term select)
                        (wrap-in-term object/reql-function))
@@ -212,7 +212,7 @@
   (let ((options nil))
     (when non-atomic (push (cons "non_atomic" t) options))
     (when durability (push (cons "durability" durability) options))
-    (when return-vals (push (cons "return_vals" t) options))
+    (when return-vals (push (cons "return_changes" t) options))
     (create-term +term-term-type-replace+
                  (list (wrap-in-term select)
                        (wrap-in-term object/reql-function))
@@ -226,7 +226,7 @@
   (assert (is-boolean return-vals))
   (let ((options nil))
     (when durability (push (cons "durability" durability) options))
-    (when return-vals (push (cons "return_vals" t) options))
+    (when return-vals (push (cons "return_changes" t) options))
     (create-term +term-term-type-delete+
                  (list (wrap-in-term select))
                  options)))
